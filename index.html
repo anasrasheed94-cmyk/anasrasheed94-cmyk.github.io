@@ -3,840 +3,641 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anas Rasheed — Portfolio</title>
-    <meta name="description" content="Lead Developer .NET - Building products for desktop, web & mobile from Trivandrum.">
+    <title>Anas Rasheed — Lead Developer .NET</title>
+    <meta name="description" content="Portfolio of Anas Rasheed, Lead Developer specializing in .NET, Desktop, Web, and Mobile applications.">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- Modern Variables --- */
+        /* --- Professional Variables --- */
         :root {
-            --primary: #4f46e5; /* Indigo 600 */
-            --primary-dark: #4338ca; /* Indigo 700 */
-            --primary-light: #e0e7ff; /* Indigo 100 */
-            --secondary: #64748b; /* Slate 500 */
-            --dark: #0f172a; /* Slate 900 */
-            --light: #f8fafc; /* Slate 50 */
-            --white: #ffffff;
-            --text-gray: #475569; /* Slate 600 */
-            --border: #e2e8f0; /* Slate 200 */
-            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-glow: 0 0 20px rgba(79, 70, 229, 0.3);
-            --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            --gradient-bg: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --secondary: #94a3b8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.15);
+            --radius: 12px;
+            --nav-height: 70px;
         }
 
         /* --- Reset & Base --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--dark);
+            background-color: var(--bg-body);
+            color: var(--text-main);
             line-height: 1.7;
-            background-color: var(--white);
             overflow-x: hidden;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
+        h1, h2, h3, h4, h5 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-main);
+            line-height: 1.2;
+            font-weight: 700;
         }
 
-        ul {
-            list-style: none;
-        }
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        ul { list-style: none; }
+        img { max-width: 100%; }
 
         .container {
-            max-width: 1140px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        .section-padding {
-            padding: 100px 0;
+        .section-padding { padding: 100px 0; }
+
+        /* --- Typography Utilities --- */
+        .text-gradient {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .section-title {
-            text-align: center;
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 70px;
-            color: var(--dark);
+            font-size: 2rem;
+            margin-bottom: 50px;
             position: relative;
-            letter-spacing: -0.5px;
+            display: inline-block;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 80px;
-            height: 5px;
-            background: var(--gradient-primary);
-            margin: 20px auto 0;
-            border-radius: 10px;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            margin-top: 10px;
+            border-radius: 2px;
         }
 
-        /* --- Header & Navigation (Glassmorphism) --- */
+        /* --- Navigation --- */
         header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             position: fixed;
-            width: 100%;
             top: 0;
+            width: 100%;
+            height: var(--nav-height);
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
             z-index: 1000;
-            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
+            width: 100%;
         }
 
         .logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 1.25rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
             letter-spacing: -0.5px;
         }
 
         .nav-links {
             display: flex;
-            gap: 35px;
+            gap: 30px;
         }
 
         .nav-links a {
+            font-size: 0.9rem;
             font-weight: 500;
-            color: var(--text-gray);
-            font-size: 0.95rem;
-            position: relative;
+            color: var(--text-muted);
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: var(--gradient-primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
         }
 
         .mobile-toggle {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
+            color: var(--text-main);
             cursor: pointer;
-            color: var(--dark);
         }
 
         /* --- Hero Section --- */
         #home {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            background: var(--gradient-bg);
-            padding-top: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Subtle Background Pattern */
-        #home::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, rgba(255,255,255,0) 70%);
-            top: -100px;
-            right: -100px;
-            border-radius: 50%;
-            z-index: 0;
+            padding-top: calc(var(--nav-height) + 60px);
+            padding-bottom: 80px;
+            background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 40%);
         }
 
         .hero-content {
-            max-width: 850px;
-            position: relative;
-            z-index: 1;
+            max-width: 800px;
         }
 
-        .hero-subtitle {
-            color: var(--primary);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            display: block;
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 20px;
+            color: var(--primary-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
         }
 
         .hero-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 25px;
-            color: var(--dark);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 24px;
             letter-spacing: -1px;
         }
 
         .hero-desc {
-            font-size: 1.25rem;
-            color: var(--text-gray);
+            font-size: 1.125rem;
+            color: var(--text-muted);
             margin-bottom: 40px;
-            max-width: 650px;
-            font-weight: 300;
+            max-width: 600px;
         }
 
-        .hero-buttons {
+        .hero-actions {
             display: flex;
-            gap: 20px;
-            margin-bottom: 50px;
+            gap: 16px;
+            margin-bottom: 40px;
         }
 
         .btn {
-            display: inline-block;
-            padding: 14px 35px;
-            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 8px;
             font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 1rem;
         }
 
         .btn-primary {
-            background: var(--gradient-primary);
-            color: var(--white);
-            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+            background: var(--primary);
+            color: white;
+            border: 1px solid var(--primary);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.5);
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
         }
 
         .btn-outline {
-            border: 2px solid var(--border);
-            color: var(--dark);
             background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-main);
         }
 
         .btn-outline:hover {
             border-color: var(--primary);
             color: var(--primary);
-            transform: translateY(-3px);
         }
 
         .hero-contact {
             display: flex;
             flex-wrap: wrap;
-            gap: 25px;
-            font-size: 0.95rem;
-            color: var(--text-gray);
-            font-weight: 500;
+            gap: 24px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
-        .hero-contact span {
+        .hero-contact div {
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .hero-contact i {
-            color: var(--primary);
-        }
+        .hero-contact i { color: var(--primary); }
 
-        .hero-contact a:hover {
-            color: var(--primary);
-        }
-
-        /* --- About Section --- */
-        #about {
-            background: var(--white);
-        }
-
+        /* --- About & Skills --- */
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.5fr 1fr;
             gap: 60px;
-            align-items: start;
         }
 
         .about-text p {
-            margin-bottom: 25px;
-            color: var(--text-gray);
+            color: var(--text-muted);
+            margin-bottom: 20px;
             font-size: 1.05rem;
         }
 
-        .quick-facts {
-            background: var(--light);
-            padding: 25px;
-            border-radius: 12px;
+        .stats-box {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
             margin-top: 30px;
-            border-left: 5px solid var(--primary);
-            font-size: 0.95rem;
-            color: var(--dark);
-            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
-        .skills-container {
+        .stats-box strong { color: var(--primary); }
+
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
 
         .skill-card {
-            background: var(--white);
-            padding: 35px;
-            border-radius: 16px;
-            box-shadow: var(--shadow-sm);
+            background: var(--bg-card);
+            padding: 24px;
+            border-radius: var(--radius);
             border: 1px solid var(--border);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
         .skill-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-light);
+            border-color: var(--primary);
+            transform: translateX(5px);
         }
 
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient-primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .skill-card:hover::before {
-            opacity: 1;
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
         }
 
         .skill-icon {
-            font-size: 2.5rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
-
-        .skill-title {
-            font-weight: 700;
-            margin-bottom: 15px;
-            font-size: 1.25rem;
-            color: var(--dark);
+            width: 40px;
+            height: 40px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
         }
 
         .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
 
         .tag {
-            background: var(--primary-light);
-            color: var(--primary-dark);
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.75rem;
+            background: var(--bg-body);
+            color: var(--secondary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
         }
 
-        /* --- Timeline Styles (Modernized) --- */
+        /* --- Timeline (Experience & Education) --- */
         .timeline-section {
-            background-color: var(--light);
-            position: relative;
+            background: #162032;
         }
 
         .timeline-container {
             position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
+            max-width: 900px;
         }
 
-        /* The Vertical Line with Gradient */
-        .timeline-container::after {
+        .timeline-container::before {
             content: '';
             position: absolute;
-            width: 4px;
-            background: var(--gradient-primary);
+            left: 0;
             top: 0;
             bottom: 0;
-            left: 20px;
-            margin-left: -2px;
-            border-radius: 4px;
-            box-shadow: 0 0 10px rgba(79, 70, 229, 0.4);
+            width: 2px;
+            background: var(--border);
         }
 
         .timeline-item {
-            padding: 10px 40px;
             position: relative;
-            background-color: inherit;
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 40px;
-        }
-
-        /* The Dot on the Timeline */
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            right: auto;
-            background-color: var(--white);
-            border: 4px solid var(--primary);
-            top: 20px;
-            left: 8px;
-            border-radius: 50%;
-            z-index: 2;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 0 4px var(--primary-light);
-        }
-
-        .timeline-item:hover::after {
-            background-color: var(--primary);
-            transform: scale(1.2);
-            box-shadow: 0 0 0 4px var(--primary-light), 0 0 15px rgba(79, 70, 229, 0.6);
-        }
-
-        /* The Content Card */
-        .timeline-content {
-            padding: 30px;
-            background-color: var(--white);
-            position: relative;
-            border-radius: 16px;
-            box-shadow: var(--shadow-md);
-            margin-left: 30px;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border);
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-light);
-        }
-
-        .timeline-date {
-            display: inline-block;
-            background: var(--primary-light);
-            color: var(--primary-dark);
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            letter-spacing: 0.5px;
-        }
-
-        .timeline-title {
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin: 0 0 8px 0;
-            color: var(--dark);
-            letter-spacing: -0.5px;
-        }
-
-        .timeline-company {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            margin: 0 0 12px 0;
-            font-weight: 600;
-        }
-
-        .timeline-company a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 700;
-            transition: color 0.3s ease;
-        }
-
-        .timeline-company a:hover {
-            color: var(--primary-dark);
-            text-decoration: underline;
-        }
-
-        .timeline-location {
-            font-size: 0.9rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
-            display: block;
-            font-weight: 500;
-        }
-
-        .timeline-desc {
-            font-size: 1rem;
-            color: var(--text-gray);
-            line-height: 1.7;
-            margin: 0;
-        }
-
-        .timeline-tech {
-            margin-top: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .tech-tag {
-            font-size: 0.8rem;
-            background: var(--light);
-            color: var(--secondary);
-            padding: 4px 12px;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .tech-tag:hover {
-            background: var(--primary);
-            color: var(--white);
-            border-color: var(--primary);
-        }
-
-        .timeline-links {
-            margin-top: 20px;
-            display: flex;
-            gap: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-        }
-
-        .timeline-links a {
-            font-size: 0.9rem;
-            color: var(--primary);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .timeline-links a:hover {
-            gap: 10px;
-        }
-
-        /* --- Projects Section --- */
-        #projects {
-            background: var(--white);
-        }
-
-        .project-filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
+            padding-left: 40px;
             margin-bottom: 50px;
         }
 
-        .filter-btn {
-            background: var(--white);
-            border: 1px solid var(--border);
-            padding: 10px 24px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--text-gray);
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        .timeline-dot {
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            background: var(--bg-body);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            z-index: 2;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
-            box-shadow: var(--shadow-sm);
         }
 
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--gradient-primary);
-            color: var(--white);
-            border-color: transparent;
-            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
-            transform: translateY(-2px);
+        .timeline-item:hover .timeline-dot {
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
         }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 35px;
-        }
-
-        .project-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 16px;
+        .timeline-card {
+            background: var(--bg-card);
             padding: 30px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
             transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
         }
 
-        .project-card:hover {
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-light);
-            transform: translateY(-5px);
+        .timeline-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
         }
 
-        .project-icon {
-            font-size: 2.5rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: inline-block;
         }
 
-        .project-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-            color: var(--dark);
-            letter-spacing: -0.5px;
+        .timeline-title {
+            font-size: 1.25rem;
+            margin-bottom: 4px;
         }
 
-        .project-desc {
+        .timeline-company {
+            color: var(--text-muted);
             font-size: 0.95rem;
-            color: var(--text-gray);
+            margin-bottom: 15px;
+        }
+
+        .timeline-company a { color: var(--primary-light); }
+        .timeline-company a:hover { text-decoration: underline; }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
             margin-bottom: 20px;
-            flex-grow: 1;
             line-height: 1.6;
         }
 
-        .project-tech {
+        .timeline-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             margin-bottom: 20px;
         }
 
-        .project-tech span {
+        .tech-pill {
             font-size: 0.75rem;
-            background: var(--light);
-            padding: 4px 10px;
-            border-radius: 6px;
+            background: var(--bg-body);
             color: var(--secondary);
-            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
             border: 1px solid var(--border);
         }
 
-        .project-link {
-            font-size: 0.9rem;
-            color: var(--primary);
-            font-weight: 700;
-            display: inline-flex;
+        .timeline-links {
+            display: flex;
+            gap: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .timeline-links a {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            display: flex;
             align-items: center;
             gap: 6px;
-            margin-top: auto;
         }
 
-        .project-link:hover {
+        .timeline-links a:hover { color: var(--primary); }
+
+        /* --- Projects --- */
+        .project-filters {
+            display: flex;
+            flex-wrap: wrap;
             gap: 10px;
-            color: var(--primary-dark);
+            margin-bottom: 40px;
         }
 
-        /* --- Contact Section --- */
-        #contact {
-            background: var(--light);
-        }
-
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 60px;
-            background: var(--white);
-            padding: 60px;
-            border-radius: 24px;
-            box-shadow: var(--shadow-lg);
+        .filter-btn {
+            background: var(--bg-card);
             border: 1px solid var(--border);
-        }
-
-        .contact-info-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 30px;
-            padding: 20px;
-            border-radius: 12px;
-            transition: background 0.3s ease;
-        }
-
-        .contact-info-item:hover {
-            background: var(--light);
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--primary-light);
-            color: var(--primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            flex-shrink: 0;
-            font-size: 1.2rem;
+            color: var(--text-muted);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
-        .contact-info-item:hover .contact-icon {
-            background: var(--gradient-primary);
-            color: var(--white);
-            transform: rotate(5deg);
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
         }
 
-        .contact-info-item h4 {
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .project-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-top: 4px;
+        }
+
+        .project-title {
             font-size: 1.1rem;
-            margin-bottom: 5px;
-            color: var(--dark);
-            font-weight: 700;
+            margin-bottom: 8px;
         }
 
-        .contact-info-item p {
-            color: var(--text-gray);
-            font-size: 0.95rem;
+        .project-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            flex-grow: 1;
+            line-height: 1.6;
         }
 
-        .contact-info-item a {
+        .project-footer {
+            margin-top: auto;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .project-tech span {
+            font-size: 0.7rem;
+            background: var(--bg-body);
+            color: var(--secondary);
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .project-link {
+            font-size: 0.85rem;
             color: var(--primary);
             font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .contact-info-item a:hover {
-            text-decoration: underline;
+        .project-link:hover { gap: 10px; }
+
+        /* --- Contact --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
         }
+
+        .contact-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-item:last-child { margin-bottom: 0; }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-info h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .contact-info p, .contact-info a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .contact-info a:hover { color: var(--primary); }
 
         .availability-box {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            padding: 30px;
-            border-radius: 16px;
-            margin-top: 20px;
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 25px;
+            border-radius: var(--radius);
             text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .availability-box h4 {
-            color: #166534;
+            color: var(--primary);
             margin-bottom: 10px;
-            font-size: 1.2rem;
-            font-weight: 700;
+            font-size: 1.1rem;
         }
 
         .availability-box p {
-            color: #15803d;
-            font-size: 1rem;
-            font-weight: 500;
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
         /* --- Footer --- */
         footer {
-            background: var(--dark);
-            color: var(--white);
-            text-align: center;
+            background: var(--bg-body);
+            border-top: 1px solid var(--border);
             padding: 40px 0;
+            text-align: center;
+            color: var(--text-muted);
             font-size: 0.9rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        footer p {
-            opacity: 0.8;
         }
 
         /* --- Responsive --- */
-        @media (max-width: 992px) {
-            .contact-wrapper {
-                grid-template-columns: 1fr;
-                padding: 40px;
-            }
-        }
-
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
                 position: absolute;
-                top: 80px;
+                top: var(--nav-height);
                 left: 0;
                 width: 100%;
-                background: var(--white);
+                background: var(--bg-card);
                 flex-direction: column;
-                padding: 30px;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-                text-align: center;
+                padding: 20px;
                 border-bottom: 1px solid var(--border);
+                gap: 15px;
             }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-toggle {
-                display: block;
-            }
-
-            .hero-title {
-                font-size: 2.8rem;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline-container::after {
-                left: 15px;
-            }
-            .timeline-item {
-                padding: 10px 10px 10px 35px;
-            }
-            .timeline-item::after {
-                left: 6px;
-                width: 18px;
-                height: 18px;
-                border-width: 3px;
-            }
-            .timeline-content {
-                margin-left: 20px;
-                padding: 25px;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .hero-buttons {
-                flex-direction: column;
-            }
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
+            .nav-links.active { display: flex; }
+            .mobile-toggle { display: block; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .hero-actions { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .timeline-container::before { left: 0; }
+            .timeline-item { padding-left: 30px; }
+            .timeline-dot { left: -6px; }
         }
     </style>
 </head>
@@ -846,7 +647,7 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">Anas Rasheed</a>
+                <a href="#" class="logo">Anas Rasheed<span style="color:var(--primary)">.</span></a>
                 <div class="mobile-toggle" id="mobile-menu">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -855,7 +656,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#experiences">Experiences</a></li>
                     <li><a href="#education">Education</a></li>
-                    <li><a href="#projects">My Projects</a></li>
+                    <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -866,19 +667,19 @@
     <section id="home">
         <div class="container">
             <div class="hero-content">
-                <span class="hero-subtitle">Lead Developer · .NET</span>
-                <h1 class="hero-title">Hello, I'm Anas Rasheed</h1>
+                <span class="hero-badge">Lead Developer · .NET</span>
+                <h1 class="hero-title">Hello, I'm <span class="text-gradient">Anas Rasheed</span></h1>
                 <p class="hero-desc">Building products for desktop, web & mobile from Trivandrum. I ship reliable .NET systems with a strong focus on performance, maintainability, and user experience.</p>
                 
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Let's talk</a>
-                    <a href="#projects" class="btn btn-outline">View Projects</a>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Let's talk</a>
+                    <a href="#projects" class="btn btn-outline"><i class="fas fa-code"></i> View Projects</a>
                 </div>
 
                 <div class="hero-contact">
-                    <span><i class="fas fa-map-marker-alt"></i> Technopark Campus</span>
-                    <span><i class="fas fa-phone"></i> <a href="tel:+919895446047">+91 98954 46047</a></span>
-                    <span><i class="fas fa-envelope"></i> <a href="mailto:anasrasheed94@gmail.com">anasrasheed94@gmail.com</a></span>
+                    <div><i class="fas fa-map-marker-alt"></i> Technopark Campus</div>
+                    <div><i class="fas fa-phone"></i> <a href="tel:+919895446047">+91 98954 46047</a></div>
+                    <div><i class="fas fa-envelope"></i> <a href="mailto:anasrasheed94@gmail.com">anasrasheed94@gmail.com</a></div>
                 </div>
             </div>
         </div>
@@ -891,31 +692,34 @@
             <div class="about-grid">
                 <div class="about-text">
                     <p>Experienced Lead Developer with 9+ years building business-critical applications across Windows, Web and Mobile platforms. I focus on delivering maintainable, performant solutions and improving team delivery through architecture, automation and mentoring.</p>
-                    <div class="quick-facts">
+                    <div class="stats-box">
                         <strong>Quick facts:</strong> 9+ years experience · 30+ Types of projects delivered to 400+ clients · Team lead · Open to collaborations
                     </div>
                 </div>
-                <div class="skills-container">
-                    <!-- Desktop -->
+                <div class="skills-grid">
                     <div class="skill-card">
-                        <div class="skill-icon"><i class="fas fa-desktop"></i></div>
-                        <h3 class="skill-title">Desktop App</h3>
+                        <div class="skill-header">
+                            <div class="skill-icon"><i class="fas fa-desktop"></i></div>
+                            <h3>Desktop App</h3>
+                        </div>
                         <div class="skill-tags">
                             <span class="tag">C#</span><span class="tag">WinForms</span><span class="tag">WPF</span><span class="tag">.NET</span>
                         </div>
                     </div>
-                    <!-- Web -->
                     <div class="skill-card">
-                        <div class="skill-icon"><i class="fas fa-globe"></i></div>
-                        <h3 class="skill-title">Website</h3>
+                        <div class="skill-header">
+                            <div class="skill-icon"><i class="fas fa-globe"></i></div>
+                            <h3>Website</h3>
+                        </div>
                         <div class="skill-tags">
                             <span class="tag">ASP.NET</span><span class="tag">ASP.NET Core</span><span class="tag">REST API</span>
                         </div>
                     </div>
-                    <!-- Mobile -->
                     <div class="skill-card">
-                        <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
-                        <h3 class="skill-title">Mobile App</h3>
+                        <div class="skill-header">
+                            <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <h3>Mobile App</h3>
+                        </div>
                         <div class="skill-tags">
                             <span class="tag">Xamarin</span><span class="tag">SQLite</span><span class="tag">Offline-first</span><span class="tag">API</span>
                         </div>
@@ -925,149 +729,139 @@
         </div>
     </section>
 
-    <!-- Experience Section (Timeline) -->
+    <!-- Experience Section -->
     <section id="experiences" class="section-padding timeline-section">
         <div class="container">
-            <h2 class="section-title">My Experiences</h2>
-            
+            <h2 class="section-title">Experiences</h2>
             <div class="timeline-container">
-                <!-- Experience 1 -->
+                
                 <div class="timeline-item">
-                    <div class="timeline-content">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
                         <span class="timeline-date">Jun 2021 — Present</span>
                         <h3 class="timeline-title">Lead Developer</h3>
-                        <p class="timeline-company">
-                            at <a href="https://prompttechglobal.com" target="_blank">PROMPTTECH GLOBAL PVT LTD</a>
-                        </p>
-                        <span class="timeline-location"><i class="fas fa-map-pin"></i> Technopark Campus, Kazhakkoottam</span>
+                        <p class="timeline-company">at <a href="https://prompttechglobal.com" target="_blank">PROMPTTECH GLOBAL PVT LTD</a></p>
                         <p class="timeline-desc">
                             Led cross-platform projects delivering Windows, Web and Mobile applications. Designed scalable backend architecture and improved performance for key modules. Introduced CI, code review and mentoring practices; reduced defects and improved delivery cadence.
                         </p>
                         <div class="timeline-tech">
-                            <span class="tech-tag">C#.NET</span><span class="tech-tag">WinForms</span><span class="tech-tag">WCF</span>
-                            <span class="tech-tag">ASP.NET</span><span class="tech-tag">Entity Framework</span><span class="tech-tag">SQL Server</span>
+                            <span class="tech-pill">C#.NET</span><span class="tech-pill">WinForms</span><span class="tech-pill">WCF</span>
+                            <span class="tech-pill">ASP.NET</span><span class="tech-pill">Entity Framework</span><span class="tech-pill">SQL Server</span>
                         </div>
                         <div class="timeline-links">
-                            <a href="https://prompttechglobal.com" target="_blank"><i class="fas fa-link"></i> Website</a>
+                            <a href="https://prompttechglobal.com" target="_blank"><i class="fas fa-globe"></i> Website</a>
                             <a href="https://www.linkedin.com/company/13270262" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Experience 2 -->
                 <div class="timeline-item">
-                    <div class="timeline-content">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
                         <span class="timeline-date">Sep 2018 — May 2021</span>
                         <h3 class="timeline-title">Senior Software Developer</h3>
-                        <p class="timeline-company">
-                            at <a href="https://inspironz.com" target="_blank">INSPIRONZ IT SOLUTIONS</a>
-                        </p>
-                        <span class="timeline-location"><i class="fas fa-map-pin"></i> Kundara, Kollam</span>
+                        <p class="timeline-company">at <a href="https://inspironz.com" target="_blank">INSPIRONZ IT SOLUTIONS</a></p>
                         <p class="timeline-desc">
                             Led cross-platform projects delivering Windows, Web and Mobile applications. Developed multiple client-facing WinForms and mobile apps with offline support. Implemented synchronization and local storage strategies using SQLite and robust error handling.
                         </p>
                         <div class="timeline-tech">
-                            <span class="tech-tag">C#.NET</span><span class="tech-tag">WinForms</span><span class="tech-tag">ASP.NET</span>
-                            <span class="tech-tag">Xamarin</span><span class="tech-tag">SQL Server</span><span class="tech-tag">SQLite</span>
+                            <span class="tech-pill">C#.NET</span><span class="tech-pill">WinForms</span><span class="tech-pill">ASP.NET</span>
+                            <span class="tech-pill">Xamarin</span><span class="tech-pill">SQL Server</span><span class="tech-pill">SQLite</span>
                         </div>
                         <div class="timeline-links">
-                            <a href="https://inspironz.com" target="_blank"><i class="fas fa-link"></i> Website</a>
+                            <a href="https://inspironz.com" target="_blank"><i class="fas fa-globe"></i> Website</a>
                             <a href="https://www.linkedin.com/company/inspironz-it-solutions/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Experience 3 -->
                 <div class="timeline-item">
-                    <div class="timeline-content">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
                         <span class="timeline-date">Nov 2016 — May 2018</span>
                         <h3 class="timeline-title">Software Developer</h3>
-                        <p class="timeline-company">
-                            at <a href="https://prompttechglobal.com" target="_blank">PROMPTTECH MIDDLE EAST PVT LTD</a>
-                        </p>
-                        <span class="timeline-location"><i class="fas fa-map-pin"></i> Ravipuram, Ernakulam</span>
+                        <p class="timeline-company">at <a href="https://prompttechglobal.com" target="_blank">PROMPTTECH MIDDLE EAST PVT LTD</a></p>
                         <p class="timeline-desc">
                             Worked on enterprise desktop applications and backend integrations. Built reporting modules and data synchronization components used across clients.
                         </p>
                         <div class="timeline-tech">
-                            <span class="tech-tag">C#.NET</span><span class="tech-tag">WinForms</span><span class="tech-tag">MySQL</span><span class="tech-tag">SQL Server</span>
+                            <span class="tech-pill">C#.NET</span><span class="tech-pill">WinForms</span><span class="tech-pill">MySQL</span><span class="tech-pill">SQL Server</span>
                         </div>
                         <div class="timeline-links">
-                            <a href="https://prompttechglobal.com" target="_blank"><i class="fas fa-link"></i> Website</a>
+                            <a href="https://prompttechglobal.com" target="_blank"><i class="fas fa-globe"></i> Website</a>
                             <a href="https://www.linkedin.com/company/13270262" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Experience 4 -->
                 <div class="timeline-item">
-                    <div class="timeline-content">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
                         <span class="timeline-date">Nov 2015 — Nov 2016</span>
                         <h3 class="timeline-title">Software Developer</h3>
-                        <p class="timeline-company">
-                            at <a href="https://www.technometrix.in/" target="_blank">TECHNOMETRICS TECHNOLOGIES</a>
-                        </p>
-                        <span class="timeline-location"><i class="fas fa-map-pin"></i> Kotarakkara, Kollam</span>
+                        <p class="timeline-company">at <a href="https://www.technometrix.in/" target="_blank">TECHNOMETRICS TECHNOLOGIES</a></p>
                         <p class="timeline-desc">
                             Delivered UI-focused WPF solutions and worked on database-driven features.
                         </p>
                         <div class="timeline-tech">
-                            <span class="tech-tag">C#.NET</span><span class="tech-tag">WPF</span><span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-pill">C#.NET</span><span class="tech-pill">WPF</span><span class="tech-pill">PostgreSQL</span>
                         </div>
                         <div class="timeline-links">
-                            <a href="https://www.technometrix.in/" target="_blank"><i class="fas fa-link"></i> Website</a>
+                            <a href="https://www.technometrix.in/" target="_blank"><i class="fas fa-globe"></i> Website</a>
                             <a href="https://www.linkedin.com/in/technometrix/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Education Section (Timeline) -->
-    <section id="education" class="section-padding timeline-section" style="background-color: #ffffff;">
+    <!-- Education Section -->
+    <section id="education" class="section-padding">
         <div class="container">
-            <h2 class="section-title">My Education</h2>
-            
+            <h2 class="section-title">Education</h2>
             <div class="timeline-container">
-                <!-- Education 1 -->
+                
                 <div class="timeline-item">
-                    <div class="timeline-content">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
                         <span class="timeline-date">2010 – 2014</span>
                         <h3 class="timeline-title">B.E. — Computer Science</h3>
                         <p class="timeline-company">PSN College of Engineering and Technology</p>
-                        <span class="timeline-location"><i class="fas fa-map-pin"></i> Tirunelveli, Tamil Nadu, India (Affiliated to Anna University, Chennai)</span>
+                        <p class="timeline-desc">Tirunelveli, Tamil Nadu, India (Affiliated to Anna University, Chennai)</p>
                     </div>
                 </div>
 
-                <!-- Education 2 -->
                 <div class="timeline-item">
-                    <div class="timeline-content">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
                         <span class="timeline-date">2008 – 2010</span>
                         <h3 class="timeline-title">Higher Secondary</h3>
                         <p class="timeline-company">Govt. HSS Anchal East</p>
-                        <span class="timeline-location"><i class="fas fa-map-pin"></i> Anchal, Kerala</span>
+                        <p class="timeline-desc">Anchal, Kerala</p>
                     </div>
                 </div>
 
-                <!-- Education 3 -->
                 <div class="timeline-item">
-                    <div class="timeline-content">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
                         <span class="timeline-date">2008</span>
                         <h3 class="timeline-title">SSLC</h3>
                         <p class="timeline-company">Govt. HSS Anchal East</p>
-                        <span class="timeline-location"><i class="fas fa-map-pin"></i> Anchal, Kerala</span>
+                        <p class="timeline-desc">Anchal, Kerala</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section-padding">
+    <section id="projects" class="section-padding timeline-section">
         <div class="container">
             <h2 class="section-title">My Projects</h2>
-            <p style="text-align: center; margin-bottom: 30px; color: var(--text-gray); font-size: 1.1rem;">Selected work across Windows, web, services, and mobile — filter to explore.</p>
+            <p style="color: var(--text-muted); margin-bottom: 30px;">Selected work across Windows, web, services, and mobile — filter to explore.</p>
             
             <div class="project-filters">
                 <button class="filter-btn active" data-filter="all">All</button>
@@ -1078,174 +872,266 @@
             </div>
 
             <div class="projects-grid">
-                <!-- Windows Projects -->
+                <!-- Windows -->
                 <div class="project-card" data-category="windows">
-                    <div class="project-icon"><i class="fas fa-cut"></i></div>
-                    <h3 class="project-title">Salon ERP</h3>
+                    <div class="project-header">
+                        <i class="fas fa-cut project-icon"></i>
+                        <h3 class="project-title">Salon ERP</h3>
+                    </div>
                     <p class="project-desc">POS and management for salons — appointments, packages and services, inventory, invoicing and HRM.</p>
-                    <div class="project-tech"><span>WinForms</span><span>C#</span><span>SQL Server</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>WinForms</span><span>C#</span><span>SQL Server</span></div>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="windows">
-                    <div class="project-icon"><i class="fas fa-tshirt"></i></div>
-                    <h3 class="project-title">Laundry ERP</h3>
+                    <div class="project-header">
+                        <i class="fas fa-tshirt project-icon"></i>
+                        <h3 class="project-title">Laundry ERP</h3>
+                    </div>
                     <p class="project-desc">End-to-end laundry business system supporting orders, billing, delivery and Collection.</p>
-                    <div class="project-tech"><span>WinForms</span><span>C#</span><span>SQL Server</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>WinForms</span><span>C#</span><span>SQL Server</span></div>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="windows">
-                    <div class="project-icon"><i class="fas fa-store"></i></div>
-                    <h3 class="project-title">Retail ERP</h3>
+                    <div class="project-header">
+                        <i class="fas fa-store project-icon"></i>
+                        <h3 class="project-title">Retail ERP</h3>
+                    </div>
                     <p class="project-desc">Retail management for small/medium stores — POS, inventory and sales reporting.</p>
-                    <div class="project-tech"><span>WinForms</span><span>WPF</span><span>SQL</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>WinForms</span><span>WPF</span><span>SQL</span></div>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="windows">
-                    <div class="project-icon"><i class="fas fa-calculator"></i></div>
-                    <h3 class="project-title">Accounts Manager</h3>
+                    <div class="project-header">
+                        <i class="fas fa-calculator project-icon"></i>
+                        <h3 class="project-title">Accounts Manager</h3>
+                    </div>
                     <p class="project-desc">Desktop accounting — ledgers, invoices, tax.</p>
-                    <div class="project-tech"><span>WinForms</span><span>C#</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>WinForms</span><span>C#</span></div>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="windows">
-                    <div class="project-icon"><i class="fas fa-shopping-cart"></i></div>
-                    <h3 class="project-title">Hypermarket ERP</h3>
+                    <div class="project-header">
+                        <i class="fas fa-shopping-cart project-icon"></i>
+                        <h3 class="project-title">Hypermarket ERP</h3>
+                    </div>
                     <p class="project-desc">Large-scale hypermarket solution handling multi-department inventory and POS.</p>
-                    <div class="project-tech"><span>WinForms</span><span>PostgreSQL</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>WinForms</span><span>PostgreSQL</span></div>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="windows">
-                    <div class="project-icon"><i class="fas fa-broom"></i></div>
-                    <h3 class="project-title">Cleaning Service ERP</h3>
+                    <div class="project-header">
+                        <i class="fas fa-broom project-icon"></i>
+                        <h3 class="project-title">Cleaning Service ERP</h3>
+                    </div>
                     <p class="project-desc">Job scheduling and management for cleaning services.</p>
-                    <div class="project-tech"><span>WinForms</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>WinForms</span></div>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="windows">
-                    <div class="project-icon"><i class="fas fa-shopping-bag"></i></div>
-                    <h3 class="project-title">Boutique Manager</h3>
+                    <div class="project-header">
+                        <i class="fas fa-shopping-bag project-icon"></i>
+                        <h3 class="project-title">Boutique Manager</h3>
+                    </div>
                     <p class="project-desc">Inventory and sales app for boutiques.</p>
-                    <div class="project-tech"><span>WinForms</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>WinForms</span></div>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="windows">
-                    <div class="project-icon"><i class="fas fa-utensils"></i></div>
-                    <h3 class="project-title">Restaurant Manager</h3>
+                    <div class="project-header">
+                        <i class="fas fa-utensils project-icon"></i>
+                        <h3 class="project-title">Restaurant Manager</h3>
+                    </div>
                     <p class="project-desc">Back-office restaurant app for orders and kitchen tickets.</p>
-                    <div class="project-tech"><span>WinForms</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>WinForms</span></div>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="windows">
-                    <div class="project-icon"><i class="fas fa-dumbbell"></i></div>
-                    <h3 class="project-title">Gym Master</h3>
+                    <div class="project-header">
+                        <i class="fas fa-dumbbell project-icon"></i>
+                        <h3 class="project-title">Gym Master</h3>
+                    </div>
                     <p class="project-desc">Gym management: memberships, attendance and billing.</p>
-                    <div class="project-tech"><span>WinForms</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>WinForms</span></div>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="windows">
-                    <div class="project-icon"><i class="fas fa-flask"></i></div>
-                    <h3 class="project-title">Lab Master</h3>
+                    <div class="project-header">
+                        <i class="fas fa-flask project-icon"></i>
+                        <h3 class="project-title">Lab Master</h3>
+                    </div>
                     <p class="project-desc">Lab tracking and reporting system for sample management.</p>
-                    <div class="project-tech"><span>WinForms</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>WinForms</span></div>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="windows">
-                    <div class="project-icon"><i class="fas fa-tools"></i></div>
-                    <h3 class="project-title">Mobile Service Master</h3>
+                    <div class="project-header">
+                        <i class="fas fa-tools project-icon"></i>
+                        <h3 class="project-title">Mobile Service Master</h3>
+                    </div>
                     <p class="project-desc">Admin tools and desktop utilities supporting mobile products.</p>
-                    <div class="project-tech"><span>WinForms</span><span>Xamarin</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>WinForms</span><span>Xamarin</span></div>
+                    </div>
                 </div>
 
-                <!-- Web Projects -->
+                <!-- Web -->
                 <div class="project-card" data-category="web">
-                    <div class="project-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3 class="project-title">Retail & Hypermarket Portal</h3>
+                    <div class="project-header">
+                        <i class="fas fa-chart-line project-icon"></i>
+                        <h3 class="project-title">Retail & Hypermarket Portal</h3>
+                    </div>
                     <p class="project-desc">Manager/admin portal with dashboards and reports.</p>
-                    <div class="project-tech"><span>ASP.NET</span><span>Web API</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>ASP.NET</span><span>Web API</span></div>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="web">
-                    <div class="project-icon"><i class="fas fa-building"></i></div>
-                    <h3 class="project-title">Company CRM</h3>
+                    <div class="project-header">
+                        <i class="fas fa-building project-icon"></i>
+                        <h3 class="project-title">Company CRM</h3>
+                    </div>
                     <p class="project-desc">Corporate sites, admin tools and CRMs.</p>
-                    <div class="project-tech"><span>ASP.NET MVC</span></div>
-                    <a href="https://prompttechglobal.com" class="project-link" target="_blank">prompttechglobal.com <i class="fas fa-external-link-alt"></i></a>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>ASP.NET MVC</span></div>
+                        <a href="https://prompttechglobal.com" class="project-link" target="_blank">prompttechglobal.com <i class="fas fa-external-link-alt"></i></a>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="web">
-                    <div class="project-icon"><i class="fas fa-store-alt"></i></div>
-                    <h3 class="project-title">Mall Management</h3>
+                    <div class="project-header">
+                        <i class="fas fa-store-alt project-icon"></i>
+                        <h3 class="project-title">Mall Management</h3>
+                    </div>
                     <p class="project-desc">Store listings, promotions and tenant analytics.</p>
-                    <div class="project-tech"><span>ASP.NET</span><span>REST</span></div>
-                    <a href="https://rpmall.in" class="project-link" target="_blank">rpmall.in <i class="fas fa-external-link-alt"></i></a>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>ASP.NET</span><span>REST</span></div>
+                        <a href="https://rpmall.in" class="project-link" target="_blank">rpmall.in <i class="fas fa-external-link-alt"></i></a>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="web">
-                    <div class="project-icon"><i class="fas fa-cloud"></i></div>
-                    <h3 class="project-title">Online Reporting</h3>
+                    <div class="project-header">
+                        <i class="fas fa-cloud project-icon"></i>
+                        <h3 class="project-title">Online Reporting</h3>
+                    </div>
                     <p class="project-desc">Cloud reporting platform with multi branch dashboards and exports.</p>
-                    <div class="project-tech"><span>ASP.NET</span><span>Reporting</span></div>
-                    <a href="#" class="project-link">salonreport.prompttechglobal.com <i class="fas fa-external-link-alt"></i></a>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>ASP.NET</span><span>Reporting</span></div>
+                        <a href="#" class="project-link">salonreport.prompttechglobal.com <i class="fas fa-external-link-alt"></i></a>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="web">
-                    <div class="project-icon"><i class="fas fa-seedling"></i></div>
-                    <h3 class="project-title">Cashew Industry Mgmt</h3>
+                    <div class="project-header">
+                        <i class="fas fa-seedling project-icon"></i>
+                        <h3 class="project-title">Cashew Industry Mgmt</h3>
+                    </div>
                     <p class="project-desc">Cloud reporting platform with dashboards and exports.</p>
-                    <div class="project-tech"><span>ASP.NET</span><span>Reporting</span></div>
-                    <a href="https://cashewinzapp.com" class="project-link" target="_blank">cashewinzapp.com <i class="fas fa-external-link-alt"></i></a>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>ASP.NET</span><span>Reporting</span></div>
+                        <a href="https://cashewinzapp.com" class="project-link" target="_blank">cashewinzapp.com <i class="fas fa-external-link-alt"></i></a>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="web">
-                    <div class="project-icon"><i class="fas fa-shop"></i></div>
-                    <h3 class="project-title">Jajis Admin</h3>
+                    <div class="project-header">
+                        <i class="fas fa-shop project-icon"></i>
+                        <h3 class="project-title">Jajis Admin</h3>
+                    </div>
                     <p class="project-desc">Administrative, dashboard analysis portal for jajis shops.</p>
-                    <div class="project-tech"><span>ASP.NET MVC</span></div>
-                    <a href="https://adminjajis.inzapp.com" class="project-link" target="_blank">adminjajis.inzapp.com <i class="fas fa-external-link-alt"></i></a>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>ASP.NET MVC</span></div>
+                        <a href="https://adminjajis.inzapp.com" class="project-link" target="_blank">adminjajis.inzapp.com <i class="fas fa-external-link-alt"></i></a>
+                    </div>
                 </div>
 
-                <!-- Web Services -->
+                <!-- Services -->
                 <div class="project-card" data-category="service">
-                    <div class="project-icon"><i class="fas fa-sync"></i></div>
-                    <h3 class="project-title">BI Tool Online Sync</h3>
+                    <div class="project-header">
+                        <i class="fas fa-sync project-icon"></i>
+                        <h3 class="project-title">BI Tool Online Sync</h3>
+                    </div>
                     <p class="project-desc">Sync transactional data to BI systems for reporting.</p>
-                    <div class="project-tech"><span>WCF</span><span>ETL</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>WCF</span><span>ETL</span></div>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="service">
-                    <div class="project-icon"><i class="fas fa-calendar-check"></i></div>
-                    <h3 class="project-title">Online Appointment Service</h3>
+                    <div class="project-header">
+                        <i class="fas fa-calendar-check project-icon"></i>
+                        <h3 class="project-title">Online Appointment Service</h3>
+                    </div>
                     <p class="project-desc">Booking API with calendar integration and notifications.</p>
-                    <div class="project-tech"><span>Web API</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>Web API</span></div>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="service">
-                    <div class="project-icon"><i class="fas fa-truck"></i></div>
-                    <h3 class="project-title">Van Sales Services</h3>
+                    <div class="project-header">
+                        <i class="fas fa-truck project-icon"></i>
+                        <h3 class="project-title">Van Sales Services</h3>
+                    </div>
                     <p class="project-desc">Offline-first sync service for van sales and inventory.</p>
-                    <div class="project-tech"><span>WCF</span><span>Queueing</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>WCF</span><span>Queueing</span></div>
+                    </div>
                 </div>
 
                 <!-- Mobile -->
                 <div class="project-card" data-category="mobile">
-                    <div class="project-icon"><i class="fas fa-mobile"></i></div>
-                    <h3 class="project-title">Root Collection App</h3>
+                    <div class="project-header">
+                        <i class="fas fa-mobile project-icon"></i>
+                        <h3 class="project-title">Root Collection App</h3>
+                    </div>
                     <p class="project-desc">Field data collection with media attachments and geotagging.</p>
-                    <div class="project-tech"><span>Xamarin</span><span>SQLite</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>Xamarin</span><span>SQLite</span></div>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="mobile">
-                    <div class="project-icon"><i class="fas fa-utensils"></i></div>
-                    <h3 class="project-title">Restaurant App</h3>
+                    <div class="project-header">
+                        <i class="fas fa-utensils project-icon"></i>
+                        <h3 class="project-title">Restaurant App</h3>
+                    </div>
                     <p class="project-desc">Customer & staff apps for menu, ordering and table management.</p>
-                    <div class="project-tech"><span>Xamarin</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>Xamarin</span></div>
+                    </div>
                 </div>
 
                 <div class="project-card" data-category="mobile">
-                    <div class="project-icon"><i class="fas fa-clipboard-list"></i></div>
-                    <h3 class="project-title">Real-time Order Taking</h3>
+                    <div class="project-header">
+                        <i class="fas fa-clipboard-list project-icon"></i>
+                        <h3 class="project-title">Real-time Order Taking</h3>
+                    </div>
                     <p class="project-desc">Quick order entry for field sales with offline caching.</p>
-                    <div class="project-tech"><span>Xamarin</span><span>Offline</span></div>
+                    <div class="project-footer">
+                        <div class="project-tech"><span>Xamarin</span><span>Offline</span></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1255,44 +1141,41 @@
     <section id="contact" class="section-padding">
         <div class="container">
             <h2 class="section-title">Get in touch</h2>
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <div class="contact-info-item">
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-item">
                         <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div>
+                        <div class="contact-info">
                             <h4>Address</h4>
                             <p>Yaseen Villa, Kottukkal PO, Anchal, Kollam, Kerala, PIN 691306</p>
                         </div>
                     </div>
-                    <div class="contact-info-item">
+                    <div class="contact-item">
                         <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                        <div>
+                        <div class="contact-info">
                             <h4>Phone</h4>
                             <p><a href="tel:+919895446047">+91 9895446047</a></p>
                         </div>
                     </div>
-                    <div class="contact-info-item">
+                    <div class="contact-item">
                         <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                        <div>
+                        <div class="contact-info">
                             <h4>Email</h4>
                             <p><a href="mailto:anasrasheed94@gmail.com">anasrasheed94@gmail.com</a></p>
                         </div>
                     </div>
-                    <div class="contact-info-item">
+                    <div class="contact-item">
                         <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
-                        <div>
+                        <div class="contact-info">
                             <h4>LinkedIn</h4>
                             <p><a href="https://www.linkedin.com/in/anasrasheed94" target="_blank">linkedin.com/in/anasrasheed94</a></p>
                         </div>
                     </div>
                 </div>
-                <div class="contact-status">
-                    <h3 style="font-family: 'Poppins', sans-serif; font-weight: 700; margin-bottom: 15px; color: var(--dark);">Availability</h3>
-                    <p style="margin-bottom: 20px; color: var(--text-gray);">Open to freelance & collaboration.</p>
-                    <div class="availability-box">
-                        <h4><i class="fas fa-clock"></i> Working Hours</h4>
-                        <p>Weekdays 9am–6pm IST</p>
-                    </div>
+                <div class="availability-box">
+                    <h4><i class="fas fa-clock"></i> Availability</h4>
+                    <p>Open to freelance & collaboration.</p>
+                    <p style="margin-top: 10px; font-weight: 600; color: var(--text-main);">Weekdays 9am–6pm IST</p>
                 </div>
             </div>
         </div>
@@ -1307,36 +1190,24 @@
 
     <!-- Scripts -->
     <script>
-        // Mobile Menu Toggle
+        // Mobile Menu
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.getElementById('nav-links');
-
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking a link
+        mobileMenu.addEventListener('click', () => navLinks.classList.toggle('active'));
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
         });
 
-        // Project Filtering
+        // Project Filter
         const filterBtns = document.querySelectorAll('.filter-btn');
         const projectCards = document.querySelectorAll('.project-card');
-
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remove active class from all buttons
                 filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
                 btn.classList.add('active');
-
-                const filterValue = btn.getAttribute('data-filter');
-
+                const filter = btn.getAttribute('data-filter');
                 projectCards.forEach(card => {
-                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
                         card.style.display = 'flex';
                     } else {
                         card.style.display = 'none';
