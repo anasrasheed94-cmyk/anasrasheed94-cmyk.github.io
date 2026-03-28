@@ -3,38 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anas Rasheed — Lead Developer .NET</title>
-    <meta name="description" content="Portfolio of Anas Rasheed, Lead Developer specializing in .NET, Desktop, Web, and Mobile applications.">
+    <title>Anas Rasheed — Profile</title>
+    <meta name="description" content="Lead Developer .NET - Building products for desktop, web & mobile from Trivandrum.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- Professional Variables --- */
+        /* --- Variables & Reset --- */
         :root {
             --bg-body: #0f172a;
+            --bg-sidebar: #1e293b;
             --bg-card: #1e293b;
             --bg-card-hover: #334155;
             --primary: #6366f1;
-            --primary-light: #818cf8;
-            --secondary: #94a3b8;
+            --primary-hover: #4f46e5;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border: #334155;
-            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.15);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             --radius: 12px;
-            --nav-height: 70px;
+            --sidebar-width: 320px;
         }
 
-        /* --- Reset & Base --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         
@@ -42,257 +38,110 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-main);
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5 {
+        h1, h2, h3, h4 {
             font-family: 'Space Grotesk', sans-serif;
             color: var(--text-main);
             line-height: 1.2;
-            font-weight: 700;
         }
 
         a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
         ul { list-style: none; }
-        img { max-width: 100%; }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
+        
+        /* --- Layout --- */
+        .layout {
+            display: grid;
+            grid-template-columns: var(--sidebar-width) 1fr;
+            min-height: 100vh;
         }
 
-        .section-padding { padding: 100px 0; }
-
-        /* --- Typography Utilities --- */
-        .text-gradient {
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 50px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--primary);
-            margin-top: 10px;
-            border-radius: 2px;
-        }
-
-        /* --- Navigation --- */
-        header {
-            position: fixed;
+        /* --- Sidebar (Profile Card) --- */
+        .sidebar {
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border);
+            padding: 40px 30px;
+            position: sticky;
             top: 0;
-            width: 100%;
-            height: var(--nav-height);
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
+            height: 100vh;
+            overflow-y: auto;
             display: flex;
-            align-items: center;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            font-family: 'Space Grotesk', sans-serif;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
+            flex-direction: column;
             gap: 30px;
         }
 
-        .nav-links a {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-muted);
+        .profile-header {
+            text-align: center;
         }
 
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--primary);
-        }
-
-        .mobile-toggle {
-            display: none;
-            font-size: 1.25rem;
-            color: var(--text-main);
-            cursor: pointer;
-        }
-
-        /* --- Hero Section --- */
-        #home {
-            padding-top: calc(var(--nav-height) + 60px);
-            padding-bottom: 80px;
-            background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 40%);
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 6px 12px;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 20px;
-            color: var(--primary-light);
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            margin-bottom: 24px;
-            letter-spacing: -1px;
-        }
-
-        .hero-desc {
-            font-size: 1.125rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            max-width: 600px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 40px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            border: 1px solid var(--primary);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-main);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .hero-contact {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .hero-contact div {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .hero-contact i { color: var(--primary); }
-
-        /* --- About & Skills --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 60px;
-        }
-
-        .about-text p {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-        }
-
-        .stats-box {
-            background: var(--bg-card);
-            padding: 20px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            margin-top: 30px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .stats-box strong { color: var(--primary); }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        .skill-card {
-            background: var(--bg-card);
-            padding: 24px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            border-color: var(--primary);
-            transform: translateX(5px);
-        }
-
-        .skill-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-
-        .skill-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--primary);
-            border-radius: 8px;
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary), #a855f7);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0 auto 20px;
+            border: 4px solid var(--bg-body);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .profile-title {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .profile-bio {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .contact-item i {
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-item a:hover { color: var(--primary); }
+
+        .skills-section h4, .availability-section h4 {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
         }
 
         .skill-tags {
@@ -301,153 +150,177 @@
             gap: 8px;
         }
 
-        .tag {
-            font-size: 0.75rem;
-            background: var(--bg-body);
-            color: var(--secondary);
+        .skill-tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
             padding: 4px 10px;
-            border-radius: 4px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .availability-box {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 15px;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+
+        .availability-box p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .availability-box strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            padding: 40px 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
             border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
         }
 
-        /* --- Timeline (Experience & Education) --- */
-        .timeline-section {
-            background: #162032;
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
         }
 
-        .timeline-container {
-            position: relative;
-            max-width: 900px;
-        }
-
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--border);
-        }
-
+        /* Experience & Education Timeline */
         .timeline-item {
             position: relative;
-            padding-left: 40px;
-            margin-bottom: 50px;
+            padding-left: 30px;
+            border-left: 2px solid var(--border);
+            margin-bottom: 30px;
         }
 
-        .timeline-item:last-child { margin-bottom: 0; }
-
-        .timeline-dot {
+        .timeline-item::before {
+            content: '';
             position: absolute;
             left: -6px;
-            top: 6px;
-            width: 14px;
-            height: 14px;
-            background: var(--bg-body);
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            z-index: 2;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item:hover .timeline-dot {
+            top: 5px;
+            width: 10px;
+            height: 10px;
             background: var(--primary);
+            border-radius: 50%;
             box-shadow: 0 0 10px var(--primary);
-        }
-
-        .timeline-card {
-            background: var(--bg-card);
-            padding: 30px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .timeline-card:hover {
-            border-color: var(--primary);
-            box-shadow: var(--shadow-md);
         }
 
         .timeline-date {
             font-size: 0.85rem;
             color: var(--primary);
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
         }
 
         .timeline-title {
-            font-size: 1.25rem;
-            margin-bottom: 4px;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
         }
 
         .timeline-company {
             color: var(--text-muted);
             font-size: 0.95rem;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
-        .timeline-company a { color: var(--primary-light); }
+        .timeline-company a { color: var(--primary); font-weight: 600; }
         .timeline-company a:hover { text-decoration: underline; }
 
         .timeline-desc {
             color: var(--text-muted);
             font-size: 0.95rem;
-            margin-bottom: 20px;
-            line-height: 1.6;
+            margin-bottom: 15px;
         }
 
         .timeline-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .tech-pill {
             font-size: 0.75rem;
             background: var(--bg-body);
-            color: var(--secondary);
-            padding: 4px 10px;
+            color: var(--text-muted);
+            padding: 3px 8px;
             border-radius: 4px;
             border: 1px solid var(--border);
         }
 
         .timeline-links {
             display: flex;
-            gap: 20px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border);
+            gap: 15px;
+            font-size: 0.85rem;
         }
 
         .timeline-links a {
-            font-size: 0.85rem;
             color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
 
         .timeline-links a:hover { color: var(--primary); }
 
-        /* --- Projects --- */
+        /* Projects Grid */
         .project-filters {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .filter-btn {
             background: var(--bg-card);
             border: 1px solid var(--border);
             color: var(--text-muted);
-            padding: 8px 20px;
+            padding: 6px 16px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 0.85rem;
-            font-weight: 500;
             transition: all 0.3s ease;
         }
 
@@ -459,70 +332,59 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
         }
 
         .project-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 24px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             transition: all 0.3s ease;
-            height: 100%;
         }
 
         .project-card:hover {
             border-color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .project-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-
-        .project-icon {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-top: 4px;
+            transform: translateY(-3px);
         }
 
         .project-title {
             font-size: 1.1rem;
             margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+
+        .project-title i { color: var(--primary); }
 
         .project-desc {
             font-size: 0.9rem;
             color: var(--text-muted);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             flex-grow: 1;
-            line-height: 1.6;
         }
 
-        .project-footer {
+        .project-meta {
             margin-top: auto;
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 15px;
+            gap: 5px;
+            margin-bottom: 10px;
         }
 
         .project-tech span {
             font-size: 0.7rem;
             background: var(--bg-body);
-            color: var(--secondary);
-            padding: 3px 8px;
-            border-radius: 4px;
+            color: var(--text-muted);
+            padding: 2px 6px;
+            border-radius: 3px;
         }
 
         .project-link {
@@ -531,683 +393,455 @@
             font-weight: 600;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-        }
-
-        .project-link:hover { gap: 10px; }
-
-        /* --- Contact --- */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .contact-card {
-            background: var(--bg-card);
-            padding: 30px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .contact-item:last-child { margin-bottom: 0; }
-
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--primary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .contact-info h4 {
-            font-size: 1rem;
-            margin-bottom: 4px;
-        }
-
-        .contact-info p, .contact-info a {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .contact-info a:hover { color: var(--primary); }
-
-        .availability-box {
-            background: rgba(99, 102, 241, 0.05);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            padding: 25px;
-            border-radius: var(--radius);
-            text-align: center;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .availability-box h4 {
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .availability-box p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background: var(--bg-body);
-            border-top: 1px solid var(--border);
-            padding: 40px 0;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            gap: 5px;
         }
 
         /* --- Responsive --- */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: var(--nav-height);
-                left: 0;
-                width: 100%;
-                background: var(--bg-card);
-                flex-direction: column;
-                padding: 20px;
-                border-bottom: 1px solid var(--border);
-                gap: 15px;
+        @media (max-width: 900px) {
+            .layout {
+                grid-template-columns: 1fr;
             }
-            .nav-links.active { display: flex; }
-            .mobile-toggle { display: block; }
-            .about-grid, .contact-grid { grid-template-columns: 1fr; }
-            .hero-actions { flex-direction: column; }
-            .btn { width: 100%; justify-content: center; }
-            .timeline-container::before { left: 0; }
-            .timeline-item { padding-left: 30px; }
-            .timeline-dot { left: -6px; }
+            .sidebar {
+                position: relative;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 30px 20px;
+            }
+            .main-content {
+                padding: 30px 20px;
+            }
+            .profile-header {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                text-align: left;
+            }
+            .profile-avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+                margin: 0;
+            }
+            .profile-info {
+                flex: 1;
+            }
+            .contact-list {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
+            }
+            .contact-item {
+                flex-direction: column;
+                gap: 5px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">Anas Rasheed<span style="color:var(--primary)">.</span></a>
-                <div class="mobile-toggle" id="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experiences">Experiences</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home">
-        <div class="container">
-            <div class="hero-content">
-                <span class="hero-badge">Lead Developer · .NET</span>
-                <h1 class="hero-title">Hello, I'm <span class="text-gradient">Anas Rasheed</span></h1>
-                <p class="hero-desc">Building products for desktop, web & mobile from Trivandrum. I ship reliable .NET systems with a strong focus on performance, maintainability, and user experience.</p>
-                
-                <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Let's talk</a>
-                    <a href="#projects" class="btn btn-outline"><i class="fas fa-code"></i> View Projects</a>
-                </div>
-
-                <div class="hero-contact">
-                    <div><i class="fas fa-map-marker-alt"></i> Technopark Campus</div>
-                    <div><i class="fas fa-phone"></i> <a href="tel:+919895446047">+91 98954 46047</a></div>
-                    <div><i class="fas fa-envelope"></i> <a href="mailto:anasrasheed94@gmail.com">anasrasheed94@gmail.com</a></div>
+    <div class="layout">
+        <!-- Sidebar (Profile Identity) -->
+        <aside class="sidebar">
+            <div class="profile-header">
+                <div class="profile-avatar">AR</div>
+                <div class="profile-info">
+                    <h1 class="profile-name">Anas Rasheed</h1>
+                    <p class="profile-title">Lead Developer · .NET</p>
+                    <p class="profile-bio">Building products for desktop, web & mobile from Trivandrum. I ship reliable .NET systems with a strong focus on performance, maintainability, and user experience.</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="section-padding">
-        <div class="container">
-            <h2 class="section-title">About</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>Experienced Lead Developer with 9+ years building business-critical applications across Windows, Web and Mobile platforms. I focus on delivering maintainable, performant solutions and improving team delivery through architecture, automation and mentoring.</p>
-                    <div class="stats-box">
-                        <strong>Quick facts:</strong> 9+ years experience · 30+ Types of projects delivered to 400+ clients · Team lead · Open to collaborations
-                    </div>
+            <div class="contact-list">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Technopark Campus</span>
                 </div>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <div class="skill-header">
-                            <div class="skill-icon"><i class="fas fa-desktop"></i></div>
-                            <h3>Desktop App</h3>
-                        </div>
-                        <div class="skill-tags">
-                            <span class="tag">C#</span><span class="tag">WinForms</span><span class="tag">WPF</span><span class="tag">.NET</span>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-header">
-                            <div class="skill-icon"><i class="fas fa-globe"></i></div>
-                            <h3>Website</h3>
-                        </div>
-                        <div class="skill-tags">
-                            <span class="tag">ASP.NET</span><span class="tag">ASP.NET Core</span><span class="tag">REST API</span>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-header">
-                            <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
-                            <h3>Mobile App</h3>
-                        </div>
-                        <div class="skill-tags">
-                            <span class="tag">Xamarin</span><span class="tag">SQLite</span><span class="tag">Offline-first</span><span class="tag">API</span>
-                        </div>
-                    </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+919895446047">+91 98954 46047</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:anasrasheed94@gmail.com">anasrasheed94@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/anasrasheed94" target="_blank">linkedin.com/in/anasrasheed94</a>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Experience Section -->
-    <section id="experiences" class="section-padding timeline-section">
-        <div class="container">
-            <h2 class="section-title">Experiences</h2>
-            <div class="timeline-container">
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <span class="timeline-date">Jun 2021 — Present</span>
-                        <h3 class="timeline-title">Lead Developer</h3>
-                        <p class="timeline-company">at <a href="https://prompttechglobal.com" target="_blank">PROMPTTECH GLOBAL PVT LTD</a></p>
-                        <p class="timeline-desc">
-                            Led cross-platform projects delivering Windows, Web and Mobile applications. Designed scalable backend architecture and improved performance for key modules. Introduced CI, code review and mentoring practices; reduced defects and improved delivery cadence.
-                        </p>
-                        <div class="timeline-tech">
-                            <span class="tech-pill">C#.NET</span><span class="tech-pill">WinForms</span><span class="tech-pill">WCF</span>
-                            <span class="tech-pill">ASP.NET</span><span class="tech-pill">Entity Framework</span><span class="tech-pill">SQL Server</span>
-                        </div>
-                        <div class="timeline-links">
-                            <a href="https://prompttechglobal.com" target="_blank"><i class="fas fa-globe"></i> Website</a>
-                            <a href="https://www.linkedin.com/company/13270262" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <span class="timeline-date">Sep 2018 — May 2021</span>
-                        <h3 class="timeline-title">Senior Software Developer</h3>
-                        <p class="timeline-company">at <a href="https://inspironz.com" target="_blank">INSPIRONZ IT SOLUTIONS</a></p>
-                        <p class="timeline-desc">
-                            Led cross-platform projects delivering Windows, Web and Mobile applications. Developed multiple client-facing WinForms and mobile apps with offline support. Implemented synchronization and local storage strategies using SQLite and robust error handling.
-                        </p>
-                        <div class="timeline-tech">
-                            <span class="tech-pill">C#.NET</span><span class="tech-pill">WinForms</span><span class="tech-pill">ASP.NET</span>
-                            <span class="tech-pill">Xamarin</span><span class="tech-pill">SQL Server</span><span class="tech-pill">SQLite</span>
-                        </div>
-                        <div class="timeline-links">
-                            <a href="https://inspironz.com" target="_blank"><i class="fas fa-globe"></i> Website</a>
-                            <a href="https://www.linkedin.com/company/inspironz-it-solutions/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <span class="timeline-date">Nov 2016 — May 2018</span>
-                        <h3 class="timeline-title">Software Developer</h3>
-                        <p class="timeline-company">at <a href="https://prompttechglobal.com" target="_blank">PROMPTTECH MIDDLE EAST PVT LTD</a></p>
-                        <p class="timeline-desc">
-                            Worked on enterprise desktop applications and backend integrations. Built reporting modules and data synchronization components used across clients.
-                        </p>
-                        <div class="timeline-tech">
-                            <span class="tech-pill">C#.NET</span><span class="tech-pill">WinForms</span><span class="tech-pill">MySQL</span><span class="tech-pill">SQL Server</span>
-                        </div>
-                        <div class="timeline-links">
-                            <a href="https://prompttechglobal.com" target="_blank"><i class="fas fa-globe"></i> Website</a>
-                            <a href="https://www.linkedin.com/company/13270262" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <span class="timeline-date">Nov 2015 — Nov 2016</span>
-                        <h3 class="timeline-title">Software Developer</h3>
-                        <p class="timeline-company">at <a href="https://www.technometrix.in/" target="_blank">TECHNOMETRICS TECHNOLOGIES</a></p>
-                        <p class="timeline-desc">
-                            Delivered UI-focused WPF solutions and worked on database-driven features.
-                        </p>
-                        <div class="timeline-tech">
-                            <span class="tech-pill">C#.NET</span><span class="tech-pill">WPF</span><span class="tech-pill">PostgreSQL</span>
-                        </div>
-                        <div class="timeline-links">
-                            <a href="https://www.technometrix.in/" target="_blank"><i class="fas fa-globe"></i> Website</a>
-                            <a href="https://www.linkedin.com/in/technometrix/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="section-padding">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="timeline-container">
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <span class="timeline-date">2010 – 2014</span>
-                        <h3 class="timeline-title">B.E. — Computer Science</h3>
-                        <p class="timeline-company">PSN College of Engineering and Technology</p>
-                        <p class="timeline-desc">Tirunelveli, Tamil Nadu, India (Affiliated to Anna University, Chennai)</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <span class="timeline-date">2008 – 2010</span>
-                        <h3 class="timeline-title">Higher Secondary</h3>
-                        <p class="timeline-company">Govt. HSS Anchal East</p>
-                        <p class="timeline-desc">Anchal, Kerala</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <span class="timeline-date">2008</span>
-                        <h3 class="timeline-title">SSLC</h3>
-                        <p class="timeline-company">Govt. HSS Anchal East</p>
-                        <p class="timeline-desc">Anchal, Kerala</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section-padding timeline-section">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <p style="color: var(--text-muted); margin-bottom: 30px;">Selected work across Windows, web, services, and mobile — filter to explore.</p>
-            
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="windows">Windows</button>
-                <button class="filter-btn" data-filter="web">Websites</button>
-                <button class="filter-btn" data-filter="service">Web Services</button>
-                <button class="filter-btn" data-filter="mobile">Mobile</button>
-            </div>
-
-            <div class="projects-grid">
-                <!-- Windows -->
-                <div class="project-card" data-category="windows">
-                    <div class="project-header">
-                        <i class="fas fa-cut project-icon"></i>
-                        <h3 class="project-title">Salon ERP</h3>
-                    </div>
-                    <p class="project-desc">POS and management for salons — appointments, packages and services, inventory, invoicing and HRM.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>WinForms</span><span>C#</span><span>SQL Server</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="windows">
-                    <div class="project-header">
-                        <i class="fas fa-tshirt project-icon"></i>
-                        <h3 class="project-title">Laundry ERP</h3>
-                    </div>
-                    <p class="project-desc">End-to-end laundry business system supporting orders, billing, delivery and Collection.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>WinForms</span><span>C#</span><span>SQL Server</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="windows">
-                    <div class="project-header">
-                        <i class="fas fa-store project-icon"></i>
-                        <h3 class="project-title">Retail ERP</h3>
-                    </div>
-                    <p class="project-desc">Retail management for small/medium stores — POS, inventory and sales reporting.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>WinForms</span><span>WPF</span><span>SQL</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="windows">
-                    <div class="project-header">
-                        <i class="fas fa-calculator project-icon"></i>
-                        <h3 class="project-title">Accounts Manager</h3>
-                    </div>
-                    <p class="project-desc">Desktop accounting — ledgers, invoices, tax.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>WinForms</span><span>C#</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="windows">
-                    <div class="project-header">
-                        <i class="fas fa-shopping-cart project-icon"></i>
-                        <h3 class="project-title">Hypermarket ERP</h3>
-                    </div>
-                    <p class="project-desc">Large-scale hypermarket solution handling multi-department inventory and POS.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>WinForms</span><span>PostgreSQL</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="windows">
-                    <div class="project-header">
-                        <i class="fas fa-broom project-icon"></i>
-                        <h3 class="project-title">Cleaning Service ERP</h3>
-                    </div>
-                    <p class="project-desc">Job scheduling and management for cleaning services.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>WinForms</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="windows">
-                    <div class="project-header">
-                        <i class="fas fa-shopping-bag project-icon"></i>
-                        <h3 class="project-title">Boutique Manager</h3>
-                    </div>
-                    <p class="project-desc">Inventory and sales app for boutiques.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>WinForms</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="windows">
-                    <div class="project-header">
-                        <i class="fas fa-utensils project-icon"></i>
-                        <h3 class="project-title">Restaurant Manager</h3>
-                    </div>
-                    <p class="project-desc">Back-office restaurant app for orders and kitchen tickets.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>WinForms</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="windows">
-                    <div class="project-header">
-                        <i class="fas fa-dumbbell project-icon"></i>
-                        <h3 class="project-title">Gym Master</h3>
-                    </div>
-                    <p class="project-desc">Gym management: memberships, attendance and billing.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>WinForms</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="windows">
-                    <div class="project-header">
-                        <i class="fas fa-flask project-icon"></i>
-                        <h3 class="project-title">Lab Master</h3>
-                    </div>
-                    <p class="project-desc">Lab tracking and reporting system for sample management.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>WinForms</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="windows">
-                    <div class="project-header">
-                        <i class="fas fa-tools project-icon"></i>
-                        <h3 class="project-title">Mobile Service Master</h3>
-                    </div>
-                    <p class="project-desc">Admin tools and desktop utilities supporting mobile products.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>WinForms</span><span>Xamarin</span></div>
-                    </div>
-                </div>
-
-                <!-- Web -->
-                <div class="project-card" data-category="web">
-                    <div class="project-header">
-                        <i class="fas fa-chart-line project-icon"></i>
-                        <h3 class="project-title">Retail & Hypermarket Portal</h3>
-                    </div>
-                    <p class="project-desc">Manager/admin portal with dashboards and reports.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>ASP.NET</span><span>Web API</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="web">
-                    <div class="project-header">
-                        <i class="fas fa-building project-icon"></i>
-                        <h3 class="project-title">Company CRM</h3>
-                    </div>
-                    <p class="project-desc">Corporate sites, admin tools and CRMs.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>ASP.NET MVC</span></div>
-                        <a href="https://prompttechglobal.com" class="project-link" target="_blank">prompttechglobal.com <i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="web">
-                    <div class="project-header">
-                        <i class="fas fa-store-alt project-icon"></i>
-                        <h3 class="project-title">Mall Management</h3>
-                    </div>
-                    <p class="project-desc">Store listings, promotions and tenant analytics.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>ASP.NET</span><span>REST</span></div>
-                        <a href="https://rpmall.in" class="project-link" target="_blank">rpmall.in <i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="web">
-                    <div class="project-header">
-                        <i class="fas fa-cloud project-icon"></i>
-                        <h3 class="project-title">Online Reporting</h3>
-                    </div>
-                    <p class="project-desc">Cloud reporting platform with multi branch dashboards and exports.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>ASP.NET</span><span>Reporting</span></div>
-                        <a href="#" class="project-link">salonreport.prompttechglobal.com <i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="web">
-                    <div class="project-header">
-                        <i class="fas fa-seedling project-icon"></i>
-                        <h3 class="project-title">Cashew Industry Mgmt</h3>
-                    </div>
-                    <p class="project-desc">Cloud reporting platform with dashboards and exports.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>ASP.NET</span><span>Reporting</span></div>
-                        <a href="https://cashewinzapp.com" class="project-link" target="_blank">cashewinzapp.com <i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="web">
-                    <div class="project-header">
-                        <i class="fas fa-shop project-icon"></i>
-                        <h3 class="project-title">Jajis Admin</h3>
-                    </div>
-                    <p class="project-desc">Administrative, dashboard analysis portal for jajis shops.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>ASP.NET MVC</span></div>
-                        <a href="https://adminjajis.inzapp.com" class="project-link" target="_blank">adminjajis.inzapp.com <i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-
-                <!-- Services -->
-                <div class="project-card" data-category="service">
-                    <div class="project-header">
-                        <i class="fas fa-sync project-icon"></i>
-                        <h3 class="project-title">BI Tool Online Sync</h3>
-                    </div>
-                    <p class="project-desc">Sync transactional data to BI systems for reporting.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>WCF</span><span>ETL</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="service">
-                    <div class="project-header">
-                        <i class="fas fa-calendar-check project-icon"></i>
-                        <h3 class="project-title">Online Appointment Service</h3>
-                    </div>
-                    <p class="project-desc">Booking API with calendar integration and notifications.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>Web API</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="service">
-                    <div class="project-header">
-                        <i class="fas fa-truck project-icon"></i>
-                        <h3 class="project-title">Van Sales Services</h3>
-                    </div>
-                    <p class="project-desc">Offline-first sync service for van sales and inventory.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>WCF</span><span>Queueing</span></div>
-                    </div>
-                </div>
-
-                <!-- Mobile -->
-                <div class="project-card" data-category="mobile">
-                    <div class="project-header">
-                        <i class="fas fa-mobile project-icon"></i>
-                        <h3 class="project-title">Root Collection App</h3>
-                    </div>
-                    <p class="project-desc">Field data collection with media attachments and geotagging.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>Xamarin</span><span>SQLite</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="mobile">
-                    <div class="project-header">
-                        <i class="fas fa-utensils project-icon"></i>
-                        <h3 class="project-title">Restaurant App</h3>
-                    </div>
-                    <p class="project-desc">Customer & staff apps for menu, ordering and table management.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>Xamarin</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="mobile">
-                    <div class="project-header">
-                        <i class="fas fa-clipboard-list project-icon"></i>
-                        <h3 class="project-title">Real-time Order Taking</h3>
-                    </div>
-                    <p class="project-desc">Quick order entry for field sales with offline caching.</p>
-                    <div class="project-footer">
-                        <div class="project-tech"><span>Xamarin</span><span>Offline</span></div>
-                    </div>
+            <div class="skills-section">
+                <h4>Core Skills</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">.NET</span>
+                    <span class="skill-tag">WinForms</span>
+                    <span class="skill-tag">WPF</span>
+                    <span class="skill-tag">ASP.NET</span>
+                    <span class="skill-tag">Xamarin</span>
+                    <span class="skill-tag">SQL Server</span>
+                    <span class="skill-tag">API</span>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section-padding">
-        <div class="container">
-            <h2 class="section-title">Get in touch</h2>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="contact-info">
-                            <h4>Address</h4>
-                            <p>Yaseen Villa, Kottukkal PO, Anchal, Kollam, Kerala, PIN 691306</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                        <div class="contact-info">
-                            <h4>Phone</h4>
-                            <p><a href="tel:+919895446047">+91 9895446047</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                        <div class="contact-info">
-                            <h4>Email</h4>
-                            <p><a href="mailto:anasrasheed94@gmail.com">anasrasheed94@gmail.com</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
-                        <div class="contact-info">
-                            <h4>LinkedIn</h4>
-                            <p><a href="https://www.linkedin.com/in/anasrasheed94" target="_blank">linkedin.com/in/anasrasheed94</a></p>
-                        </div>
-                    </div>
-                </div>
+            <div class="availability-section">
+                <h4>Availability</h4>
                 <div class="availability-box">
-                    <h4><i class="fas fa-clock"></i> Availability</h4>
-                    <p>Open to freelance & collaboration.</p>
-                    <p style="margin-top: 10px; font-weight: 600; color: var(--text-main);">Weekdays 9am–6pm IST</p>
+                    <strong>Open to Work</strong>
+                    <p>Freelance & Collaboration</p>
+                    <p style="margin-top:5px; font-size:0.75rem;">Weekdays 9am–6pm IST</p>
                 </div>
             </div>
-        </div>
-    </section>
+            
+            <div style="margin-top: auto; text-align: center; font-size: 0.8rem; color: var(--text-muted);">
+                &copy; 2024 Anas Rasheed
+            </div>
+        </aside>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Anas Rasheed · Portfolio</p>
-        </div>
-    </footer>
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- About Section -->
+            <section class="section" id="about">
+                <h2 class="section-title"><i class="fas fa-user"></i> About</h2>
+                <div class="card">
+                    <p style="margin-bottom: 15px; color: var(--text-muted);">
+                        Experienced Lead Developer with 9+ years building business-critical applications across Windows, Web and Mobile platforms. I focus on delivering maintainable, performant solutions and improving team delivery through architecture, automation and mentoring.
+                    </p>
+                    <div style="background: rgba(99, 102, 241, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--primary);">
+                        <strong style="color: var(--primary);">Quick facts:</strong> 
+                        <span style="color: var(--text-muted);">9+ years experience · 30+ Types of projects delivered to 400+ clients · Team lead · Open to collaborations</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="section" id="experiences">
+                <h2 class="section-title"><i class="fas fa-briefcase"></i> Experiences</h2>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">Jun 2021 — Present</span>
+                    <h3 class="timeline-title">Lead Developer</h3>
+                    <p class="timeline-company">at <a href="https://prompttechglobal.com" target="_blank">PROMPTTECH GLOBAL PVT LTD</a></p>
+                    <p class="timeline-desc">
+                        Led cross-platform projects delivering Windows, Web and Mobile applications. Designed scalable backend architecture and improved performance for key modules. Introduced CI, code review and mentoring practices; reduced defects and improved delivery cadence.
+                    </p>
+                    <div class="timeline-tech">
+                        <span class="tech-pill">C#.NET</span><span class="tech-pill">WinForms</span><span class="tech-pill">WCF</span>
+                        <span class="tech-pill">ASP.NET</span><span class="tech-pill">Entity Framework</span><span class="tech-pill">SQL Server</span>
+                    </div>
+                    <div class="timeline-links">
+                        <a href="https://prompttechglobal.com" target="_blank"><i class="fas fa-globe"></i> Website</a>
+                        <a href="https://www.linkedin.com/company/13270262" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">Sep 2018 — May 2021</span>
+                    <h3 class="timeline-title">Senior Software Developer</h3>
+                    <p class="timeline-company">at <a href="https://inspironz.com" target="_blank">INSPIRONZ IT SOLUTIONS</a></p>
+                    <p class="timeline-desc">
+                        Led cross-platform projects delivering Windows, Web and Mobile applications. Developed multiple client-facing WinForms and mobile apps with offline support. Implemented synchronization and local storage strategies using SQLite and robust error handling.
+                    </p>
+                    <div class="timeline-tech">
+                        <span class="tech-pill">C#.NET</span><span class="tech-pill">WinForms</span><span class="tech-pill">ASP.NET</span>
+                        <span class="tech-pill">Xamarin</span><span class="tech-pill">SQL Server</span><span class="tech-pill">SQLite</span>
+                    </div>
+                    <div class="timeline-links">
+                        <a href="https://inspironz.com" target="_blank"><i class="fas fa-globe"></i> Website</a>
+                        <a href="https://www.linkedin.com/company/inspironz-it-solutions/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">Nov 2016 — May 2018</span>
+                    <h3 class="timeline-title">Software Developer</h3>
+                    <p class="timeline-company">at <a href="https://prompttechglobal.com" target="_blank">PROMPTTECH MIDDLE EAST PVT LTD</a></p>
+                    <p class="timeline-desc">
+                        Worked on enterprise desktop applications and backend integrations. Built reporting modules and data synchronization components used across clients.
+                    </p>
+                    <div class="timeline-tech">
+                        <span class="tech-pill">C#.NET</span><span class="tech-pill">WinForms</span><span class="tech-pill">MySQL</span><span class="tech-pill">SQL Server</span>
+                    </div>
+                    <div class="timeline-links">
+                        <a href="https://prompttechglobal.com" target="_blank"><i class="fas fa-globe"></i> Website</a>
+                        <a href="https://www.linkedin.com/company/13270262" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">Nov 2015 — Nov 2016</span>
+                    <h3 class="timeline-title">Software Developer</h3>
+                    <p class="timeline-company">at <a href="https://www.technometrix.in/" target="_blank">TECHNOMETRICS TECHNOLOGIES</a></p>
+                    <p class="timeline-desc">
+                        Delivered UI-focused WPF solutions and worked on database-driven features.
+                    </p>
+                    <div class="timeline-tech">
+                        <span class="tech-pill">C#.NET</span><span class="tech-pill">WPF</span><span class="tech-pill">PostgreSQL</span>
+                    </div>
+                    <div class="timeline-links">
+                        <a href="https://www.technometrix.in/" target="_blank"><i class="fas fa-globe"></i> Website</a>
+                        <a href="https://www.linkedin.com/in/technometrix/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section class="section" id="education">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">2010 – 2014</span>
+                    <h3 class="timeline-title">B.E. — Computer Science</h3>
+                    <p class="timeline-company">PSN College of Engineering and Technology</p>
+                    <p class="timeline-desc">Tirunelveli, Tamil Nadu, India (Affiliated to Anna University, Chennai)</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">2008 – 2010</span>
+                    <h3 class="timeline-title">Higher Secondary</h3>
+                    <p class="timeline-company">Govt. HSS Anchal East</p>
+                    <p class="timeline-desc">Anchal, Kerala</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">2008</span>
+                    <h3 class="timeline-title">SSLC</h3>
+                    <p class="timeline-company">Govt. HSS Anchal East</p>
+                    <p class="timeline-desc">Anchal, Kerala</p>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="section" id="projects">
+                <h2 class="section-title"><i class="fas fa-laptop-code"></i> My Projects</h2>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">Selected work across Windows, web, services, and mobile — filter to explore.</p>
+                
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="windows">Windows</button>
+                    <button class="filter-btn" data-filter="web">Websites</button>
+                    <button class="filter-btn" data-filter="service">Web Services</button>
+                    <button class="filter-btn" data-filter="mobile">Mobile</button>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Windows -->
+                    <div class="project-card" data-category="windows">
+                        <h3 class="project-title"><i class="fas fa-cut"></i> Salon ERP</h3>
+                        <p class="project-desc">POS and management for salons — appointments, packages and services, inventory, invoicing and HRM.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>WinForms</span><span>C#</span><span>SQL Server</span></div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="windows">
+                        <h3 class="project-title"><i class="fas fa-tshirt"></i> Laundry ERP</h3>
+                        <p class="project-desc">End-to-end laundry business system supporting orders, billing, delivery and Collection.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>WinForms</span><span>C#</span><span>SQL Server</span></div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="windows">
+                        <h3 class="project-title"><i class="fas fa-store"></i> Retail ERP</h3>
+                        <p class="project-desc">Retail management for small/medium stores — POS, inventory and sales reporting.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>WinForms</span><span>WPF</span><span>SQL</span></div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="windows">
+                        <h3 class="project-title"><i class="fas fa-calculator"></i> Accounts Manager</h3>
+                        <p class="project-desc">Desktop accounting — ledgers, invoices, tax.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>WinForms</span><span>C#</span></div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="windows">
+                        <h3 class="project-title"><i class="fas fa-shopping-cart"></i> Hypermarket ERP</h3>
+                        <p class="project-desc">Large-scale hypermarket solution handling multi-department inventory and POS.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>WinForms</span><span>PostgreSQL</span></div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="windows">
+                        <h3 class="project-title"><i class="fas fa-broom"></i> Cleaning Service ERP</h3>
+                        <p class="project-desc">Job scheduling and management for cleaning services.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>WinForms</span></div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="windows">
+                        <h3 class="project-title"><i class="fas fa-shopping-bag"></i> Boutique Manager</h3>
+                        <p class="project-desc">Inventory and sales app for boutiques.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>WinForms</span></div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="windows">
+                        <h3 class="project-title"><i class="fas fa-utensils"></i> Restaurant Manager</h3>
+                        <p class="project-desc">Back-office restaurant app for orders and kitchen tickets.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>WinForms</span></div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="windows">
+                        <h3 class="project-title"><i class="fas fa-dumbbell"></i> Gym Master</h3>
+                        <p class="project-desc">Gym management: memberships, attendance and billing.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>WinForms</span></div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="windows">
+                        <h3 class="project-title"><i class="fas fa-flask"></i> Lab Master</h3>
+                        <p class="project-desc">Lab tracking and reporting system for sample management.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>WinForms</span></div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="windows">
+                        <h3 class="project-title"><i class="fas fa-tools"></i> Mobile Service Master</h3>
+                        <p class="project-desc">Admin tools and desktop utilities supporting mobile products.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>WinForms</span><span>Xamarin</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Web -->
+                    <div class="project-card" data-category="web">
+                        <h3 class="project-title"><i class="fas fa-chart-line"></i> Retail & Hypermarket Portal</h3>
+                        <p class="project-desc">Manager/admin portal with dashboards and reports.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>ASP.NET</span><span>Web API</span></div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="web">
+                        <h3 class="project-title"><i class="fas fa-building"></i> Company CRM</h3>
+                        <p class="project-desc">Corporate sites, admin tools and CRMs.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>ASP.NET MVC</span></div>
+                            <a href="https://prompttechglobal.com" class="project-link" target="_blank">prompttechglobal.com <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="web">
+                        <h3 class="project-title"><i class="fas fa-store-alt"></i> Mall Management</h3>
+                        <p class="project-desc">Store listings, promotions and tenant analytics.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>ASP.NET</span><span>REST</span></div>
+                            <a href="https://rpmall.in" class="project-link" target="_blank">rpmall.in <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="web">
+                        <h3 class="project-title"><i class="fas fa-cloud"></i> Online Reporting</h3>
+                        <p class="project-desc">Cloud reporting platform with multi branch dashboards and exports.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>ASP.NET</span><span>Reporting</span></div>
+                            <a href="#" class="project-link">salonreport.prompttechglobal.com <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="web">
+                        <h3 class="project-title"><i class="fas fa-seedling"></i> Cashew Industry Mgmt</h3>
+                        <p class="project-desc">Cloud reporting platform with dashboards and exports.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>ASP.NET</span><span>Reporting</span></div>
+                            <a href="https://cashewinzapp.com" class="project-link" target="_blank">cashewinzapp.com <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="web">
+                        <h3 class="project-title"><i class="fas fa-shop"></i> Jajis Admin</h3>
+                        <p class="project-desc">Administrative, dashboard analysis portal for jajis shops.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>ASP.NET MVC</span></div>
+                            <a href="https://adminjajis.inzapp.com" class="project-link" target="_blank">adminjajis.inzapp.com <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Services -->
+                    <div class="project-card" data-category="service">
+                        <h3 class="project-title"><i class="fas fa-sync"></i> BI Tool Online Sync</h3>
+                        <p class="project-desc">Sync transactional data to BI systems for reporting.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>WCF</span><span>ETL</span></div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="service">
+                        <h3 class="project-title"><i class="fas fa-calendar-check"></i> Online Appointment Service</h3>
+                        <p class="project-desc">Booking API with calendar integration and notifications.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>Web API</span></div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="service">
+                        <h3 class="project-title"><i class="fas fa-truck"></i> Van Sales Services</h3>
+                        <p class="project-desc">Offline-first sync service for van sales and inventory.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>WCF</span><span>Queueing</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile -->
+                    <div class="project-card" data-category="mobile">
+                        <h3 class="project-title"><i class="fas fa-mobile"></i> Root Collection App</h3>
+                        <p class="project-desc">Field data collection with media attachments and geotagging.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>Xamarin</span><span>SQLite</span></div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="mobile">
+                        <h3 class="project-title"><i class="fas fa-utensils"></i> Restaurant App</h3>
+                        <p class="project-desc">Customer & staff apps for menu, ordering and table management.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>Xamarin</span></div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="mobile">
+                        <h3 class="project-title"><i class="fas fa-clipboard-list"></i> Real-time Order Taking</h3>
+                        <p class="project-desc">Quick order entry for field sales with offline caching.</p>
+                        <div class="project-meta">
+                            <div class="project-tech"><span>Xamarin</span><span>Offline</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
 
     <!-- Scripts -->
     <script>
-        // Mobile Menu
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
-        mobileMenu.addEventListener('click', () => navLinks.classList.toggle('active'));
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => navLinks.classList.remove('active'));
-        });
-
-        // Project Filter
+        // Project Filtering
         const filterBtns = document.querySelectorAll('.filter-btn');
         const projectCards = document.querySelectorAll('.project-card');
+
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                const filter = btn.getAttribute('data-filter');
+
+                const filterValue = btn.getAttribute('data-filter');
+
                 projectCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
                         card.style.display = 'flex';
                     } else {
                         card.style.display = 'none';
